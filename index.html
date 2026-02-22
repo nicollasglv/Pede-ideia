@@ -1,167 +1,111 @@
-!DOCTYPE html>  <html lang="pt-br">  
-<head>  
-<meta charset="UTF-8">  
-<title>Peça a Ideia</title>  
-<style>  
-body {  
-  background-color: black;  
-  color: white;  
-  font-family: Arial, sans-serif;  
-  text-align: center;  
-  margin: 0;  
-  padding: 20px;  
-}  .container {
-max-width: 600px;
-margin: auto;
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Peça a Ideia</title>
+
+<style>
+body {
+  background-color: black;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
 }
 
-h1 {
-font-size: 28px;
-}
-
-.idea-icon {
-font-size: 50px;
-margin-bottom: 10px;
+.container {
+  max-width: 600px;
+  margin: auto;
 }
 
 input, textarea {
-width: 100%;
-padding: 10px;
-margin: 8px 0;
-border: none;
-border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 5px;
 }
 
 button {
-background-color: yellow;
-color: black;
-padding: 12px;
-border: none;
-border-radius: 5px;
-font-weight: bold;
-cursor: pointer;
+  background-color: yellow;
+  color: black;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 button:hover {
-background-color: orange;
+  background-color: orange;
 }
 
 .pix-box {
-margin-top: 20px;
-padding: 15px;
-background-color: #111;
-border-radius: 8px;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #111;
+  border-radius: 8px;
 }
 </style>
+</head>
 
-</head>  <body>  
-<div class="container">  <div class="idea-icon">💡</div>  <h1>Travou? Falta ideia?</h1>  <p>  
-Aqui é simples:<br>  
-Você explica o que precisa<br>  
-E recebe uma ideia direta, clara e prática.  
-</p>  <p><strong>Sem texto longo. Sem enrolação.</strong></p>  <h2>Peça a Ideia</h2>  <form>  
-<input type="text" placeholder="Seu nome" required>  
-<input type="text" placeholder="Seu WhatsApp" required>  
-<input type="email" placeholder="Seu Gmail" required>  
-<textarea rows="5" placeholder="Explique seu problema..." required></textarea>  
-<button type="submit">Enviar Pedido</button>  
-</form>  <div class="pix-box">  
-<p><strong>Pagamento via Pix</strong></p>  
-<p>Chave Pix: Galvaodosantosnicollas@gmail.com.com</p>  
-<p>Após o pagamento, envie o comprovante no WhatsApp.</p>  
-<p>Resposta em até 24h.</p>  
-</div>  </div>  
-</body>  
-</html>!DOCTYPE html>  <html lang="pt-br">
+<body>
+<div class="container">
 
-<head>    
-<meta charset="UTF-8">    
-<title>Peça a Ideia</title>    
-<style>    
-body {    
-  background-color: black;    
-  color: white;    
-  font-family: Arial, sans-serif;    
-  text-align: center;    
-  margin: 0;    
-  padding: 20px;    
-}  .container {  
-max-width: 600px;  
-margin: auto;  
-}  h1 {
-font-size: 28px;
+<div style="font-size:50px;">💡</div>
+
+<h1>Travou? Falta ideia?</h1>
+
+<p>
+Aqui é simples:<br>
+Você explica o que precisa<br>
+E recebe uma ideia direta, clara e prática.
+</p>
+
+<p><strong>Sem texto longo. Sem enrolação.</strong></p>
+
+<h2>Peça a Ideia</h2>
+
+<form onsubmit="enviarWhatsApp(event)">
+  <input type="text" id="nome" placeholder="Seu nome" required>
+  <input type="text" id="telefone" placeholder="Seu WhatsApp" required>
+  <input type="email" id="email" placeholder="Seu Gmail" required>
+  <textarea id="pedido" rows="5" placeholder="Explique seu problema..." required></textarea>
+  <button type="submit">Enviar Pedido</button>
+</form>
+
+<div class="pix-box">
+<p><strong>Pagamento via Pix</strong></p>
+<p>Chave Pix: Galvaodosantosnicollas@gmail.com</p>
+<p>Após o pagamento, envie o comprovante no WhatsApp.</p>
+<p>Resposta em até 24h.</p>
+</div>
+
+</div>
+
+<script>
+function enviarWhatsApp(e){
+  e.preventDefault();
+
+  var nome = document.getElementById("nome").value;
+  var telefone = document.getElementById("telefone").value;
+  var email = document.getElementById("email").value;
+  var pedido = document.getElementById("pedido").value;
+
+  var numero = "5511979872476";
+
+  var mensagem = encodeURIComponent(
+    "💡 Novo Pedido - Peça a Ideia\n\n" +
+    "Nome: " + nome +
+    "\nWhatsApp: " + telefone +
+    "\nGmail: " + email +
+    "\n\nProblema:\n" + pedido
+  );
+
+  window.location.href = "https://wa.me/" + numero + "?text=" + mensagem;
 }
+</script>
 
-.idea-icon {
-font-size: 50px;
-margin-bottom: 10px;
-}
-
-input, textarea {
-width: 100%;
-padding: 10px;
-margin: 8px 0;
-border: none;
-border-radius: 5px;
-}
-
-button {
-background-color: yellow;
-color: black;
-padding: 12px;
-border: none;
-border-radius: 5px;
-font-weight: bold;
-cursor: pointer;
-}
-
-button:hover {
-background-color: orange;
-}
-
-.pix-box {
-margin-top: 20px;
-padding: 15px;
-background-color: #111;
-border-radius: 8px;
-}
-</style>
-
-</head>  <body>    
-<div class="container">  <div class="idea-icon">💡</div>  <h1>Travou? Falta ideia?</h1>  <p>    
-Aqui é simples:<br>    
-Você explica o que precisa<br>    
-E recebe uma ideia direta, clara e prática.    
-</p>  <p><strong>Sem texto longo. Sem enrolação.</strong></p>  <h2>Peça a Ideia</h2>  <form>    
-<input type="text" placeholder="Seu nome" required>    
-<input type="text" placeholder="Seu WhatsApp" required>    
-<input type="email" placeholder="Seu Gmail" required>    
-<textarea rows="5" placeholder="Explique seu problema..." required></textarea>    
-<button type="submit">Enviar Pedido</button>    
-</form>  <div class="pix-box">    
-<p><strong>Pagamento via Pix</strong></p>    
-<p>Chave Pix: Galvaodosantosnicollas@gmail.com.com</p>    
-<p>Após o pagamento, envie o comprovante no WhatsApp.</p>    
-<p>Resposta em até 24h.</p>    
-</div>  </div>    
-</body>    
-</html>/form>  <script>    
-function enviarWhatsApp(e){    
-  e.preventDefault();    
-  var nome = document.getElementById('nome').value;    
-  var email = document.getElementById('email').value;    
-  var telefone = document.getElementById('telefone').value;    
-  var pedido = document.getElementById('pedido').value;    var numero = "5511979872476";
-var mensagem = encodeURIComponent(
-"Nome completo: " + nome +
-"\nE-mail: " + email +
-"\nTelefone: " + telefone +
-"\nPedido: " + pedido +
-"\n💡 Enviado pelo site Peça a Ideia"
-);
-
-window.open("https://api.whatsapp.com/send?phone=" + numero + "&text=" + mensagem, "_blank");
-}
-</script>  </body>
-
+</body>
 </html>
