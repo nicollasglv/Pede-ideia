@@ -2,7 +2,8 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Peça a Ideia</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peça a Ideia 💡</title>
 
 <style>
 body {
@@ -10,100 +11,108 @@ body {
   color: white;
   font-family: Arial, sans-serif;
   text-align: center;
-  margin: 0;
   padding: 20px;
 }
 
-.container {
-  max-width: 600px;
-  margin: auto;
+h1 { font-size: 28px; margin-bottom: 20px; }
+h2 { font-size: 22px; margin-top: 20px; }
+
+p, li {
+  font-size: 16px;
+  line-height: 1.5;
 }
 
-input, textarea {
+ul, ol {
+  text-align: left;
+  display: inline-block;
+  margin: 10px auto;
+}
+
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: left;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input, textarea, button {
   width: 100%;
   padding: 10px;
-  margin: 8px 0;
-  border: none;
+  margin-top: 5px;
   border-radius: 5px;
+  border: none;
+  font-size: 16px;
 }
 
 button {
   background-color: yellow;
   color: black;
-  padding: 12px;
-  border: none;
-  border-radius: 5px;
   font-weight: bold;
+  margin-top: 20px;
   cursor: pointer;
 }
 
 button:hover {
   background-color: orange;
 }
-
-.pix-box {
-  margin-top: 20px;
-  padding: 15px;
-  background-color: #111;
-  border-radius: 8px;
-}
 </style>
 </head>
 
 <body>
-<div class="container">
 
-<div style="font-size:50px;">💡</div>
+<h1>Peça a Ideia 💡</h1>
+<p>Está travado? Falta ideia? Envie seu problema e receba uma solução prática direto no WhatsApp.</p>
 
-<h1>Travou? Falta ideia?</h1>
-
-<p>
-Aqui é simples:<br>
-Você explica o que precisa<br>
-E recebe uma ideia direta, clara e prática.
-</p>
-
-<p><strong>Sem texto longo. Sem enrolação.</strong></p>
-
-<h2>Peça a Ideia</h2>
+<h2>Como funciona</h2>
+<ol>
+  <li>Preencha seus dados.</li>
+  <li>Clique em Enviar Pedido.</li>
+  <li>O WhatsApp abre com a mensagem pronta.</li>
+  <li>Eu recebo e respondo com a ideia.</li>
+</ol>
 
 <form onsubmit="enviarWhatsApp(event)">
-  <input type="text" id="nome" placeholder="Seu nome" required>
-  <input type="text" id="telefone" placeholder="Seu WhatsApp" required>
-  <input type="email" id="email" placeholder="Seu Gmail" required>
-  <textarea id="pedido" rows="5" placeholder="Explique seu problema..." required></textarea>
+  <label for="nome">Nome completo:</label>
+  <input type="text" id="nome" required>
+
+  <label for="email">E-mail:</label>
+  <input type="email" id="email" required>
+
+  <label for="telefone">Telefone com DDD:</label>
+  <input type="tel" id="telefone" required>
+
+  <label for="pedido">Descreva seu problema:</label>
+  <textarea id="pedido" rows="4" required></textarea>
+
   <button type="submit">Enviar Pedido</button>
 </form>
-
-<div class="pix-box">
-<p><strong>Pagamento via Pix</strong></p>
-<p>Chave Pix: Galvaodosantosnicollas@gmail.com</p>
-<p>Após o pagamento, envie o comprovante no WhatsApp.</p>
-<p>Resposta em até 24h.</p>
-</div>
-
-</div>
 
 <script>
 function enviarWhatsApp(e){
   e.preventDefault();
 
-  var nome = document.getElementById("nome").value;
-  var telefone = document.getElementById("telefone").value;
-  var email = document.getElementById("email").value;
-  var pedido = document.getElementById("pedido").value;
+  var nome = document.getElementById("nome").value.trim();
+  var email = document.getElementById("email").value.trim();
+  var telefone = document.getElementById("telefone").value.trim();
+  var pedido = document.getElementById("pedido").value.trim();
 
-  var numero = "5511979872476";
+  var numero = "5511979872476"; // seu número com 55 + DDD + número
 
-  var mensagem = encodeURIComponent(
+  var texto =
     "💡 Novo Pedido - Peça a Ideia\n\n" +
-    "Nome: " + nome +
-    "\nWhatsApp: " + telefone +
-    "\nGmail: " + email +
-    "\n\nProblema:\n" + pedido
-  );
+    "Nome: " + nome + "\n" +
+    "E-mail: " + email + "\n" +
+    "Telefone: " + telefone + "\n\n" +
+    "Problema:\n" + pedido;
 
-  window.location.href = "https://wa.me/" + numero + "?text=" + mensagem;
+  var url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(texto);
+
+  window.open(url, "_blank");
 }
 </script>
 
